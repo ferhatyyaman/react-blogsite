@@ -6,7 +6,8 @@ const useFetch=(url)=>{
     const [error,setError]=useState(null);
 
     useEffect(()=>{
-        fetch(url)
+      async function getFetch(){
+       await fetch(url)
         .then(res=>{
            if(!res.ok){
              throw Error("fetch api bağlanamadı");
@@ -17,6 +18,8 @@ const useFetch=(url)=>{
            setError(null);
          })
         .catch(err=>{setError(err.message)})
+      }
+       getFetch(); 
        },[url]);
 
        

@@ -12,7 +12,8 @@ export default function Create() {
     event.preventDefault();
     const blog ={title,body,author};
 
-    fetch("http://localhost:8000/blogs",{
+    async function getFetch(){
+     await fetch("http://localhost:8000/blogs",{
       method:"Post",
       Headers:{"content-Type": "application/json"},
       body:JSON.stringify(blog)
@@ -20,14 +21,10 @@ export default function Create() {
       console.log("new blog added");
       history("/");
     })
+    }
+    getFetch(); 
   }
 
-const bodyHandler = (event) => {
-  setBody({body: event.target.value })
-}
-const authorHandler = (event) => {
-  setAuthor({author: event.target.value })
-}
 
   return (
     <div className='create'>

@@ -5,15 +5,20 @@ import useFetch from '../useFetch';
 export default function Blogdetails() {
 
     const {id} = useParams();
-    const {data: blog ,error}=useFetch("http://localhost:8000/blogs" + id); //!!hatalı olabilir
+    const {data: blog ,error}=useFetch("http://localhost:8000/blogs" + id);
     const history=useNavigate ();
 
     const handleClick=()=>{
-      fetch("http://localhost:8000/blogs"+blog.id,{ //!!hatalı olabilir
+
+      async function getFetch(){
+        fetch("http://localhost:8000/blogs"+blog.id,{ 
         method:"DELETE"
       }).then(()=>{
         history("/");
       })
+      }
+      getFetch();
+      
   }
 
   return (
