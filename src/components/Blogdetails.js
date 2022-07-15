@@ -11,7 +11,7 @@ export default function Blogdetails() {
     const handleClick=()=>{
 
       async function getFetch(){
-        fetch("http://localhost:8000/blogs"+blog.id,{ 
+        await fetch("http://localhost:8000/blogs"+blog.id,{ 
         method:"DELETE"
       }).then(()=>{
         history("/");
